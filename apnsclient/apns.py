@@ -698,7 +698,7 @@ class APNs(object):
                 items = self._connection.feedback(self.packet_size, self.tail_timeout)
                 if items is not None:
                     for token, timestamp in items:
-                        yield (token, datetime.datetime.fromtimestamp(timestamp))
+                        yield (token, datetime.datetime.utcfromtimestamp(timestamp))
                 else:
                     # a timeout or failure or socket was closed.
                     break
